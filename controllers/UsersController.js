@@ -13,7 +13,7 @@ class UsersController {
 
     const hashedPassword = sha1(password);
 
-    await dbClient.db.collection('users').insertOne({ email, hashedPassword },
+    await dbClient.db.collection('users').insertOne({ email, password: hashedPassword },
       (error, result) => {
         if (error) return res.status(500).send({ error });
 
